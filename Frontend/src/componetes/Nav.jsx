@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../usecontext/ProductContext.jsx';
+import { useUser } from '../usecontext/UserContext.jsx'
 import Carrito from  './Carrito.jsx'
+import LoginForm from '../forms/LoginForm.jsx';
+import  RegisterForm from '../forms/RegisterForm.jsx';
+
 
 const Nav = () => {
   const { pokemon, items } = useProducts();
+  const {user} = useUser();
 
   const pokemonTypes = Array.from(new Set(pokemon.map(p => p.tipo).flat()));
   const itemTypes = Array.from(new Set(items.map(i => i.tipo).flat()));
 
   const [showPokemonTypes, setShowPokemonTypes] = useState(false);
   const [showItemTypes, setShowItemTypes] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+
+
+
 
   return (
   <>
@@ -18,6 +28,7 @@ const Nav = () => {
   <nav>
  
     <ul>
+      <li><Link to="/home">Home</Link></li>
       <li>
         <Link to="/pokemon">Pokemon</Link>
         <ul>
@@ -50,11 +61,24 @@ const Nav = () => {
           </li>
         </ul>
       </li>
+      
+        <li><Link to="/about">About</Link></li>
+        {user ? (
+          <li>Welcome, {user.name}</li>
+        ) : (
+          <>
+            <li><Link to="/login" >Login</Link></li>
+            <li><Link to="/admin">Admin</Link></li>
+            <li><Link to="/register">Register</Link></li>
+          </>
+        )}
     </ul>
    </nav> 
     <Carrito/>
   
   </header>
+      {showLoginForm && <LoginForm />}
+      {showRegisterForm && <RegisterForm />}
 </>
 )}   
 

@@ -13,7 +13,7 @@ export const  UserProvider = ({children}) =>{
     useEffect(() =>{
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://localhost:2999/user')
+                const response = await fetch('http://localhost:8080/user/user')
                 if(!response.ok) {
                     throw new Error('Failed to fetch user');
                 }
@@ -34,11 +34,11 @@ export const  UserProvider = ({children}) =>{
       }
         
    return(
-       <UserContext.Provider value={{user}}> 
+       <UserContext.Provider value={{user, setUser}}> 
         {children}
        </UserContext.Provider>
     );
 
 };    
 
-export const  UseUser = ()=> useContext(UserContext);
+export const  useUser = ()=> useContext(UserContext);

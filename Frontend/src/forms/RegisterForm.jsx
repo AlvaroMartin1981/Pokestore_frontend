@@ -1,42 +1,64 @@
-import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom'; 
-import { UserContext } from './UserProvider';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
-  const { setUser } = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [redirectToProducts, setRedirectToProducts] = useState(false); 
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    });
+    const [registered, setRegistered] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:2999/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      if (!response.ok) {
-        throw new Error('Error al registrar usuario');
-      }
-      const data = await response.json();
-      console.log('Registro exitoso:', data);
-      setUser(data.user);
-      setRedirectToProducts(true); 
-    } catch (error) {
-      console.error('Error al registrar usuario:', error);
-    }
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-  
-return redirectToProducts ? <Redirect to="/productos" /> : (
-    <form onSubmit={handleSubmit}>
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Correo electrónico" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Contraseña" />
-      <button type="submit">Registrarse</button>
-    </form>
-  );
-};  
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8080/user/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            if (!response.ok) {
+                throw new Error('Error al registrar usuario');
+            }
+            // Usuario registrado exitosamente
+            setRegistered(true);
+        } catch (error) {
+            console.error('Error al registrar usuario:', error.message);
+        }
+    };
+
+    useEffect(() => {
+        if (registered) {
+            navigate('/pokemon');
+        }
+    }, [registered, navigate]);
+
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label htmlFor="name">Nombre:</label>
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+            </div>
+            <div>
+                <label htmlFor="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+            </div>
+            <div>
+                <label htmlFor="password">Contraseña:</label>
+                <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+    );
+};
+
 export default RegisterForm;

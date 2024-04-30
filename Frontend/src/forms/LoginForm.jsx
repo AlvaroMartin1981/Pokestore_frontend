@@ -1,16 +1,17 @@
-
-import React, { useState, useContext } from 'react';
-import { UserContext } from './UserProvider'; 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../usecontext/UserContext';
 
 const LoginForm = () => {
-  const { setUser } = useContext(UserContext); 
+  const { user, setUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Hook para la navegación
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:2999/user/login', {
+      const response = await fetch('http://localhost:8080/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +23,8 @@ const LoginForm = () => {
       }
       const data = await response.json();
       console.log('Inicio de sesión exitoso:', data);
-      setUser(data.user); 
+      setUser(data.user);
+      navigate('/pokemon'); // Redirige al usuario a la ruta '/pokemon' después del inicio de sesión
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
     }
