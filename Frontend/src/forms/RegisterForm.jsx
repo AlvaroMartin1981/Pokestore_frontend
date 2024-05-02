@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [Error, setError] =  useState('');
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -17,6 +19,8 @@ const RegisterForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        console.log('Datos a enviar:', formData); // Verifica que los datos estén correctos aquí
         try {
             const response = await fetch('http://localhost:8080/user/register', {
                 method: 'POST',
@@ -29,11 +33,14 @@ const RegisterForm = () => {
                 throw new Error('Error al registrar usuario');
             }
             // Usuario registrado exitosamente
-            setRegistered(true);
+            navigate('/pokemon');
         } catch (error) {
             console.error('Error al registrar usuario:', error.message);
+            setError('Error al registrar usuario. Inténtelo de nuevo.');
         }
+        setIsSubmitting(false);
     };
+    
 
     useEffect(() => {
         if (registered) {
