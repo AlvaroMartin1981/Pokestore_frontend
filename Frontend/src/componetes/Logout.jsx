@@ -7,16 +7,16 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      // Obtener el token almacenado en el frontend (ejemplo: desde el almacenamiento local)
-      const token = localStorage.getItem('token');
+        // Obtener el token almacenado en el frontend (ejemplo: desde el almacenamiento local)
+        const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:8080/user/logout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token // Enviar el token al backend
-        },
-      });
+        const response = await fetch('http://localhost:8080/user/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token // Enviar el token al backend
+            },
+        });
       
       if (response.ok) {
         // Manejar el logout exitoso y eliminar el token almacenado en el frontend

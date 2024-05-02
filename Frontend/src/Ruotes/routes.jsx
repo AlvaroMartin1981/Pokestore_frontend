@@ -4,7 +4,7 @@ import { useProducts } from '../usecontext/ProductContext.jsx';
 import { useUser } from '../usecontext/UserContext.jsx';
 import Cards from '../componetes/Cards.jsx';
 import Nav from '../componetes/Nav.jsx';
-import ProductDetail from '../componetes/ProductDetail.jsx';
+import ProductDetail from '../componetes/productDetail.jsx';
 import ProductType from '../componetes/ProductType.jsx';
 import Legendarios from '../componetes/Lengendario.jsx';
 import Mythical from '../componetes/Mythical.jsx';
