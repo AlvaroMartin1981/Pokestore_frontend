@@ -13,7 +13,7 @@ import RegisterForm from '../forms/RegisterForm.jsx';
 import Home from '../componetes/Home.jsx';
 import AdminForm from '../forms/AdminForm.jsx';
 import Dashboard from '../componetes/Dashboard.jsx';
-
+import Logout from '../componetes/Logout.jsx';
 
 
 function Rutas() {
@@ -34,6 +34,7 @@ function Rutas() {
                 <Route path="/Home" element={<Home  />} />
                 <Route path="/login" element={isAuthenticated() ? <Navigate to="/pokemon" /> : <LoginForm />} />
                 <Route path="/register" element={isAuthenticated() ? <Navigate to="/pokemon" /> : <RegisterForm />} />
+                <Route path="/logout"  element={<Logout />} />
                 <Route path="/admin" element={<AdminForm />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/pokemon" element={<Cards products={pokemon} />} />

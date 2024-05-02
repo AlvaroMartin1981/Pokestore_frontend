@@ -23,6 +23,7 @@ const LoginForm = () => {
       }
       const data = await response.json();
       console.log('Inicio de sesión exitoso:', data);
+      localStorage.setItem('token', 'your_token_here')
       setUser(data.user);
       navigate('/pokemon'); // Redirige al usuario a la ruta '/pokemon' después del inicio de sesión
     } catch (error) {
