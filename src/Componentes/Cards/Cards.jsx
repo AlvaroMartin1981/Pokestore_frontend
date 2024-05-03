@@ -50,17 +50,17 @@ const Cards = ({ products}) => {
               </Link>
             </div>
             <div className="text_card">
-              <h3>
+              <h2>
                 <Link to={`/product/${product.nombre}`}>
                   {product.id} - {product.nombre}
                 </Link>
-              </h3>
+              </h2>
               <Link to={`/product/${product.categoria}`}>
-              <h4>{product.categoria}</h4>
+              <h3>{product.categoria}</h3>
               </Link>
               {typeof product.precio === "number" ? (
                 <div className="card_carro">
-                  <h5>{product.precio}€</h5>
+                  <h4>{product.precio}€</h4>
                   <button className="card_btn" onClick={() => añadir(product)}>
                   🛒 
                   </button>
