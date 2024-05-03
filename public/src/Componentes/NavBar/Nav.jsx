@@ -4,7 +4,7 @@ import { useProducts } from '../../usecontext/ProductContext.jsx';
 import { useUser } from '../../usecontext/UserContext.jsx'
 import Cart from '../Cart/Cart.jsx';
 import SearchBar from '../SearchBar/SearchBar.jsx';
-import LoginForm from '../forms/LoginForm.jsx';
+import LoginForm from '../formularios/LoginForm.jsx';
 import Logout from '../Logout.jsx';
 import './Navbar.css';
 

@@ -10,7 +10,7 @@ import Legendarios from '../Componentes/Lengendario.jsx';
 import Mythical from '../Componentes/Mythical.jsx';
 import Home from '../Pages/Home.jsx';
 import Footer from '../Componentes/Footer/Footer.jsx';
-import RegisterForm from '../Componentes/forms/RegisterForm.jsx'
+import RegisterForm from '../Componentes/formularios/RegisterForm.jsx'
 
 function Rutas() {
     const { pokemon, items } = useProducts();
