@@ -20,8 +20,9 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        const urlApiRegister = import.meta.env.VITE_APP_API_URL+'user/register'
         try {
-            const response = await fetch('https://pokestorebackend-production.up.railway.app/user/register', {
+            const response = await fetch(urlApiRegister, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

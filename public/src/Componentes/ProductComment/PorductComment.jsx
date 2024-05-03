@@ -10,9 +10,9 @@ const ProductCommentForm = ({ productId, onCommentSubmit }) => {
     event.preventDefault();
     setLoading(true);
     setError(null);
-
+    const urlApiComment = import.meta.env.VITE_APP_API_URL+'productos/${productId}/comentario'
     try {
-      const response = await fetch(`https://pokestorebackend-production.up.railway.app/productos/${productId}/comentario`, {
+      const response = await fetch(urlApiComment, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

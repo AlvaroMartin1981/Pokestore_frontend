@@ -8,8 +8,9 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
+      const urlApiUser = import.meta.env.VITE_APP_API_URL+'user/user'
       try {
-        const response = await fetch('https://pokestorebackend-production.up.railway.app/user/user');
+        const response = await fetch(urlApiUser);
         const data = await response.json();
 
         // Verificar si la respuesta es exitosa

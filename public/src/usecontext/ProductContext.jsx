@@ -10,8 +10,9 @@ export const ProductProvider = ({ children }) => {
   
 
   const fetchProducts = async () => {
+    const urlApiProducts = import.meta.env.VITE_APP_API_URL+'productos'
     try {
-      const response = await fetch('https://pokestorebackend-production.up.railway.app/productos');
+      const response = await fetch(urlApiProducts);
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
