@@ -60,7 +60,7 @@ const Cards = ({ products}) => {
               </Link>
               {typeof product.precio === "number" ? (
                 <div className="card_carro">
-                  <h4>{product.precio}€</h4>
+                  <h3>{product.precio}€</h3>
                   <button className="card_btn" onClick={() => añadir(product)}>
                   🛒 
                   </button>
