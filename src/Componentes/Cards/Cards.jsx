@@ -46,7 +46,7 @@ const Cards = ({ products}) => {
           <div className="card" key={product._id}>
             <div>
               <Link to={`/product/${product.nombre}`}>
-                <img src={product.imagen} alt={product.nombre} width="150px" />
+                <img src={product.imagen} alt={product.nombre} width='300px'/>
               </Link>
             </div>
             <div className="text_card">
