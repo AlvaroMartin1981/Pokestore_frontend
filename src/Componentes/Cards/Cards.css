@@ -49,9 +49,6 @@ select{
     font-weight: 600;
     text-align: center; 
   }
-.text_card h4{
-  margin-top: -10px;
-} 
   
   .card_carro{
     display: flex;
