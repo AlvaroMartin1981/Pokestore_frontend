@@ -89,8 +89,8 @@ const Home = () => {
                 <Link to={categoryLink}>
                     <img src={imagen} alt={nombre} style={{ width: '300px' }} />
                     <div className='container_home_text'>
-                    <h3>{displayTipo}</h3>
-                        <h4>{categoria}</h4>
+                    <h3>{categoria} - {displayTipo}</h3>
+                        
                     </div>
                 </Link>
             </div>
