@@ -55,7 +55,7 @@ select{
   
   .card_carro{
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
     align-items: center;
     color: black;
     font-weight: 600;
