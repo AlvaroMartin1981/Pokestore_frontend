@@ -10,9 +10,9 @@ const ProductCommentForm = ({ productId, onCommentSubmit }) => {
     event.preventDefault();
     setLoading(true);
     setError(null);
-    const urlApiComment = import.meta.env.VITE_APP_API_URL+'productos/${productId}/comentario'
+
     try {
-      const response = await fetch(urlApiComment, {
+      const response = await fetch(`http://localhost:2999/productos/${productId}/comentario`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

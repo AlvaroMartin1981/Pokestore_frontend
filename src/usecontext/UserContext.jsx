@@ -8,9 +8,8 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const urlApiUser = import.meta.env.VITE_APP_API_URL+'user/user'
       try {
-        const response = await fetch(urlApiUser);
+        const response = await fetch('http://localhost:2999/user/user');
         const data = await response.json();
 
         // Verificar si la respuesta es exitosa

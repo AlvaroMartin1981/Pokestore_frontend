@@ -10,9 +10,8 @@ export const ProductProvider = ({ children }) => {
   
 
   const fetchProducts = async () => {
-    const urlApiProducts = import.meta.env.VITE_APP_API_URL+'productos'
     try {
-      const response = await fetch(urlApiProducts);
+      const response = await fetch('http://localhost:2999/productos');
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
