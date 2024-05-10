@@ -68,14 +68,14 @@ const Home = () => {
         let categoryLink = '';
 
         if (categoria === 'Item') {
-            categoryLink = '/items';
+            categoryLink = `/items/tipo/${product.tipo[0]}`;
         } else {
             if (pokemonAttributes && pokemonAttributes.legendario) {
                 categoryLink = '/pokemon/legendarios';
             } else if (pokemonAttributes && pokemonAttributes.mythical) {
                 categoryLink = '/pokemon/misticos';
             } else {
-                categoryLink = '/pokemon/tipo';
+                categoryLink =`/pokemon/tipo/${product.tipo}`;
             }
 
         }
@@ -86,6 +86,7 @@ const Home = () => {
 
         return (
             <div className='container_home'key={nombre}>
+                {console.log(product.tipo)}
                 <Link to={categoryLink}>
                     <img src={imagen} alt={nombre} style={{ width: '300px' }} />
                     <div className='container_home_text'>
